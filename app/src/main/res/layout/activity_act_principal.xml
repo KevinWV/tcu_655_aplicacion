@@ -6,4 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".ActPrincipal">
 
+    <fragment android:name="com.example.usuario.tcu_655.Mapa"
+        android:id="@+id/list"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" />
+
 </android.support.constraint.ConstraintLayout>
