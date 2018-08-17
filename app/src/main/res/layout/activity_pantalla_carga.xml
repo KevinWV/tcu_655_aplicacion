@@ -10,6 +10,8 @@
         android:id="@+id/pantallaCarga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/meme"
-        android:contentDescription="Pantalla de carga"/>
+        android:contentDescription="Pantalla de carga"
+        android:src="@drawable/firma"
+        app:layout_anchor="@+id/pantallaCarga"
+        app:layout_anchorGravity="top|center" />
 </android.support.design.widget.CoordinatorLayout>

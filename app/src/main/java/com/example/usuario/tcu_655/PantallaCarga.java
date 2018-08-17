@@ -18,7 +18,7 @@ public class PantallaCarga extends Activity {
             @Override
             public void run() {
 
-                Intent next2 = new Intent(PantallaCarga.this, ActPrincipal.class);
+                Intent next2 = new Intent(PantallaCarga.this, Principal.class);
                 startActivity(next2);
                 finish();
             }

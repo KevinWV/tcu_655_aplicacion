@@ -9,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
 
@@ -57,6 +59,14 @@ public class Mapa extends Fragment {
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
         map = view.findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK);
+        //Cod propio
+        map.setBuiltInZoomControls(false);
+        map.setMultiTouchControls(true);
+        IMapController mapController = map.getController();
+        mapController.setZoom(10.0);
+        GeoPoint startPoint = new GeoPoint(9.029868, -83.050470);
+        mapController.setCenter(startPoint);
+        map.setMultiTouchControls(true);
 
         return view;
     }
