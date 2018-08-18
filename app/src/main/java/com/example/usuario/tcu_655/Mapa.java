@@ -1,6 +1,7 @@
 package com.example.usuario.tcu_655;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -14,12 +15,17 @@ import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.ItemizedIconOverlay;
+import org.osmdroid.views.overlay.ItemizedOverlayWithFocus;
+import org.osmdroid.views.overlay.OverlayItem;
+
+import java.util.ArrayList;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Mapa.OnFragmentInteractionListener} interface
+ * {@link } interface
  * to handle interaction events.
  * Use the {@link Mapa#newInstance} factory method to
  * create an instance of this fragment.
@@ -27,7 +33,13 @@ import org.osmdroid.views.MapView;
 public class Mapa extends Fragment {
 
     private MapView map;    // Mapa de la aplicación
-    double lat = 0.0, lon = 0.0;    // Latitud y longitud del usuario
+    private double lat = 0.0, lon = 0.0;    // Latitud y longitud del usuario
+
+    //Docu para marker y poligonos
+    //https://github.com/osmdroid/osmdroid/wiki/Markers,-Lines-and-Polygons
+    private ArrayList<OverlayItem> lugares;
+
+
 
     //N.I.
     /**
@@ -68,7 +80,56 @@ public class Mapa extends Fragment {
         mapController.setCenter(startPoint);
         map.setMultiTouchControls(true);
 
+        setLugares();
+        //your items
+
+
+
+
         return view;
     }
 
+    private void setLugares(){
+        lugares = new ArrayList<OverlayItem>();
+        //Meter en loop cuando allan coordenadas.
+        lugares.add(new OverlayItem("Title", "Description", new GeoPoint(9.029868, -83.050470))); // Lat/Lon decimal degrees
+
+        //the overlay
+        ItemizedOverlayWithFocus<OverlayItem> lugar = new ItemizedOverlayWithFocus<OverlayItem>
+                (lugares, new ItemizedIconOverlay.OnItemGestureListener<OverlayItem>() {
+                    @Override
+                    public boolean onItemSingleTapUp(int index, OverlayItem item) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onItemLongPress(int index, OverlayItem item) {
+                        Intent myIntent = new Intent(getContext(), ContenidoAsada.class);
+                        startActivity(myIntent);
+                        return false;
+                    }
+                }, this.getContext());
+        lugar.setFocusItemsOnTap(true);
+
+        map.getOverlays().add(lugar);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        //this will refresh the osmdroid configuration on resuming.
+        //if you make changes to the configuration, use
+        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        //Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this));
+        map.onResume(); //needed for compass, my location overlays, v6.0.0 and up
+    }
+    @Override
+    public void onPause(){
+        super.onPause();
+        //this will refresh the osmdroid configuration on resuming.
+        //if you make changes to the configuration, use
+        //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        //Configuration.getInstance().save(this, prefs);
+        map.onPause();  //needed for compass, my location overlays, v6.0.0 and up
+    }
 }

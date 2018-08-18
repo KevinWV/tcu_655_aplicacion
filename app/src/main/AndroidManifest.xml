@@ -35,6 +35,10 @@
         <activity
             android:name=".Principal"
             android:label="@string/title_activity_principal"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ContenidoAsada"
+            android:label="@string/title_activity_contenido_asada"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
