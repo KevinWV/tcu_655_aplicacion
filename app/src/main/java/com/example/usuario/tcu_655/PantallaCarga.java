@@ -1,10 +1,9 @@
 package com.example.usuario.tcu_655;
 
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Bundle;
 import android.app.Activity;
-import android.widget.ImageView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
 
 public class PantallaCarga extends Activity {
 
