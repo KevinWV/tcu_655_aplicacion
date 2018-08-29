@@ -5,17 +5,17 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_mapa"
+            android:icon="@drawable/ic_mapa_24dp"
+            android:title="Mapa" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_glosario"
+            android:icon="@drawable/ic_glosario_24dp"
+            android:title="Glosario" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:id="@+id/nav_asadas"
+            android:icon="@drawable/ic_asadas_24dp"
+            android:title="Asada" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
