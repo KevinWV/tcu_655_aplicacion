@@ -8,8 +8,9 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
+    android:background="@android:color/background_light"
     app:layoutManager="LinearLayoutManager"
     tools:context=".gloarioFragment"
-    tools:listitem="@layout/fragment_gloario" >
+    tools:listitem="@layout/fragment_gloario">
 
 </android.support.v7.widget.RecyclerView>

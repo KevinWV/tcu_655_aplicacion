@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_mapa"
-            android:icon="@drawable/ic_mapa_24dp"
+            android:icon="@drawable/ic_zona_24dp"
             android:title="Mapa" />
         <item
             android:id="@+id/nav_glosario"
@@ -17,9 +17,13 @@
             android:icon="@drawable/ic_asadas_24dp"
             android:title="Asada" />
         <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_zona"
+            android:icon="@drawable/ic_zona_24dp"
+            android:title="Zonificación" />
+        <item
+            android:id="@+id/nav_contactos"
+            android:icon="@drawable/ic_contactos_24dp"
+            android:title="Contactos" />
     </group>
 
     <item android:title="Communicate">
