@@ -88,7 +88,7 @@ public class Principal extends AppCompatActivity
             ft.commit();
         } else if (id == R.id.nav_glosario) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.mainF, new gloarioFragment());
+            ft.replace(R.id.mainF, new ConceptosFragment());
             ft.commit();
         } else if (id == R.id.nav_manage) {
 
