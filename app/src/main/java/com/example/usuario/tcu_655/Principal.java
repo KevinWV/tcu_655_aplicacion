@@ -84,7 +84,7 @@ public class Principal extends AppCompatActivity
             // Handle the camera action
         } else if (id == R.id.nav_mapa) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.mainF, new Mapa());
+            ft.replace(R.id.mainF, new ArcgisAPI());
             ft.commit();
         } else if (id == R.id.nav_glosario) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
