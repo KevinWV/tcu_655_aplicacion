@@ -49,7 +49,7 @@ public class DataBaseAccess {
 
 public List<Datos> getConceptos() {
         List<Datos> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT * FROM conceptos", null);
+        Cursor cursor = database.rawQuery("SELECT * FROM glosario", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
         list.add(new Conceptos(cursor.getString(0),cursor.getString(1),cursor.getString(2)));

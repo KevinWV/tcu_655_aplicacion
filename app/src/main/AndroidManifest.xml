@@ -19,7 +19,7 @@
         <!-- Pantalla de carga -->
         <activity
             android:name=".PantallaCarga"
-            android:label="@string/title_activity_pantalla_carga"
+            android:label="Mi Cuenca"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -3,6 +3,7 @@ package com.example.usuario.tcu_655;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import java.util.List;
 
+import com.example.usuario.tcu_655.BaseDeDatos.Conceptos;
 import com.example.usuario.tcu_655.BaseDeDatos.DataBaseAccess;
 import com.example.usuario.tcu_655.BaseDeDatos.Datos;
 
@@ -52,7 +54,17 @@ public class ConceptosFragment extends Fragment {
                     public void onItemClick(AdapterView<?> arg0, View view,
                                             int position, long id) {
 
-                        //click listener
+                        Bundle arg = new Bundle();
+                        Datos c = mConceptos.get(position);
+                        arg.putString("titu", c.getNombre());
+                        arg.putString("desc", c.getTexto());
+                        arg.putString("img", c.getImagen());
+                        ItemsFragment fragment = new ItemsFragment();
+                        fragment.setArguments(arg);
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                        transaction.replace(R.id.mainF, fragment, "tag1");
+                        transaction.addToBackStack(null);
+                        transaction.commit();
                     }
                 }
         );

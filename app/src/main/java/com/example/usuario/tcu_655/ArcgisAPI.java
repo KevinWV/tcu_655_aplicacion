@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.esri.arcgisruntime.data.ShapefileFeatureTable;
 import com.esri.arcgisruntime.layers.FeatureLayer;
@@ -17,6 +16,10 @@ import com.esri.arcgisruntime.mapping.ArcGISMap;
 import com.esri.arcgisruntime.mapping.Basemap;
 import com.esri.arcgisruntime.mapping.Viewpoint;
 import com.esri.arcgisruntime.mapping.view.MapView;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 
 import static android.content.ContentValues.TAG;
 
@@ -43,6 +46,7 @@ public class ArcgisAPI extends Fragment {
             double longitude = -83.050470;
             int levelOfDetail = 11;
             ArcGISMap map = new ArcGISMap(basemapType, latitude, longitude, levelOfDetail);
+            //ArcGISMap map = new ArcGISMap(Basemap.createStreetsVector());
             mMapView.setMap(map);
         }
     }
@@ -120,8 +124,29 @@ public class ArcgisAPI extends Fragment {
     }*/
 
     private void featureLayerShapefile() {
+        Uri path = Uri.parse("file:///android_asset/shapes/p.shp");
+
+        String nPath = path.toString();
+        File f = new File(getContext().getFilesDir(),"p.shape");
+        if (f.exists() == true) {
+            Log.e(TAG, "Valid :" + "file:///android_asset/shapes/t.shp");
+        } else {
+            try {
+
+                InputStream is = getContext().getAssets().open("/shapes/p.shp");
+                int size = is.available();
+                byte[] buffer = new byte[size];
+                is.read(buffer);
+                is.close();
+
+
+                FileOutputStream fos = new FileOutputStream(f);
+                fos.write(buffer);
+                fos.close();
+            } catch (Exception e) { throw new RuntimeException(e); }
+        }
         // load the shapefile with a local path
-        ShapefileFeatureTable shapefileFeatureTable = new ShapefileFeatureTable("p.shp");
+        ShapefileFeatureTable shapefileFeatureTable = new ShapefileFeatureTable(f.getPath());
 
         shapefileFeatureTable.loadAsync();
         shapefileFeatureTable.addDoneLoadingListener(() -> {

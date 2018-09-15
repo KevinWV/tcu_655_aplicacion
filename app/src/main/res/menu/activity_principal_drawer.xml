@@ -7,15 +7,19 @@
         <item
             android:id="@+id/nav_mapa"
             android:icon="@drawable/ic_zona_24dp"
-            android:title="Mapa" />
+            android:title="Mapas" />
         <item
             android:id="@+id/nav_glosario"
             android:icon="@drawable/ic_glosario_24dp"
-            android:title="Glosario" />
+            android:title="Conceptos clave" />
+        <item
+        android:id="@+id/nav_curiosos"
+        android:icon="@drawable/llave_24dp"
+        android:title="Datos curiosos" />
         <item
             android:id="@+id/nav_asadas"
             android:icon="@drawable/ic_asadas_24dp"
-            android:title="Asada" />
+            android:title="ASADA" />
         <item
             android:id="@+id/nav_zona"
             android:icon="@drawable/ic_zona_24dp"
