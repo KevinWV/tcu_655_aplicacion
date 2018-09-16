@@ -46,8 +46,8 @@ public class ArcgisAPI extends Fragment {
             double longitude = -83.050470;
             int levelOfDetail = 11;
             ArcGISMap map = new ArcGISMap(basemapType, latitude, longitude, levelOfDetail);
-            //ArcGISMap map = new ArcGISMap(Basemap.createStreetsVector());
-            mMapView.setMap(map);
+            //mMapView.setMap(map);
+            showWebMap();
         }
     }
 
@@ -79,8 +79,9 @@ public class ArcgisAPI extends Fragment {
         int c =1;
         View view = inflater.inflate(R.layout.fragment_arcgis_api, container, false);
         mMapView = view.findViewById(R.id.mapView);
-        setupMap();
+        //setupMap();
         //featureLayerShapefile();
+        showWebMap();
         return view;
     }
 
@@ -108,63 +109,12 @@ public class ArcgisAPI extends Fragment {
        // mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    /*public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }*/
-
-    private void featureLayerShapefile() {
-        Uri path = Uri.parse("file:///android_asset/shapes/p.shp");
-
-        String nPath = path.toString();
-        File f = new File(getContext().getFilesDir(),"p.shape");
-        if (f.exists() == true) {
-            Log.e(TAG, "Valid :" + "file:///android_asset/shapes/t.shp");
-        } else {
-            try {
-
-                InputStream is = getContext().getAssets().open("/shapes/p.shp");
-                int size = is.available();
-                byte[] buffer = new byte[size];
-                is.read(buffer);
-                is.close();
+    private void showWebMap() {
 
 
-                FileOutputStream fos = new FileOutputStream(f);
-                fos.write(buffer);
-                fos.close();
-            } catch (Exception e) { throw new RuntimeException(e); }
-        }
-        // load the shapefile with a local path
-        ShapefileFeatureTable shapefileFeatureTable = new ShapefileFeatureTable(f.getPath());
-
-        shapefileFeatureTable.loadAsync();
-        shapefileFeatureTable.addDoneLoadingListener(() -> {
-            if (shapefileFeatureTable.getLoadStatus() == LoadStatus.LOADED) {
-
-                // create a feature layer to display the shapefile
-                FeatureLayer shapefileFeatureLayer = new FeatureLayer(shapefileFeatureTable);
-
-                // add the feature layer to the map
-                mMapView.getMap().getOperationalLayers().add(shapefileFeatureLayer);
-
-                // zoom the map to the extent of the shapefile
-                mMapView.setViewpointAsync(new Viewpoint(shapefileFeatureLayer.getFullExtent()));
-            } else {
-                String error = "Shapefile feature table failed to load: " + shapefileFeatureTable.getLoadError().toString();
-                Log.e(TAG, error);
-
-            }
-        });
+        String itemId = "453f5a7e73ba44c69090c150e3952dff";
+        String url = "https://www.arcgis.com/sharing/rest/content/items/" + itemId + "/data";
+        ArcGISMap map = new ArcGISMap(url);
+        mMapView.setMap(map);
     }
 }
