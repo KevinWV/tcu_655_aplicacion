@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class DataBaseAccess {
@@ -35,14 +37,15 @@ public class DataBaseAccess {
         }
     }
 
-    public List<Datos> getCuriosidades() {
-        List<Datos> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT * FROM curiosos", null);
+    public List<Leyes> getLeyes() {
+        List<Leyes> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM leyes", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            list.add(new Curiosos(cursor.getString(0),cursor.getString(1),cursor.getString(2)));
+            list.add(new Leyes(cursor.getString(0),cursor.getString(1),cursor.getString(2)));
             cursor.moveToNext();
         }
+        Collections.sort(list);
         cursor.close();
         return list;
     }

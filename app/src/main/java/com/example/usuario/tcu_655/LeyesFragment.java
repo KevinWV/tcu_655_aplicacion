@@ -12,17 +12,15 @@ import android.widget.ListView;
 import java.util.List;
 
 import com.example.usuario.tcu_655.BaseDeDatos.DataBaseAccess;
-import com.example.usuario.tcu_655.BaseDeDatos.Datos;
+import com.example.usuario.tcu_655.BaseDeDatos.Leyes;
 
 
-
-
-public class ConceptosFragment extends Fragment {
+public class LeyesFragment extends Fragment {
 
     public static ConceptosFragment me = null;
-    static ConceptosArrayAdapter conceptAdapter;
+    static LeyesArrayAdapter leyesArrayAdapter;
     ListView mListView = null;
-    static List<Datos> mConceptos;
+    static List<Leyes> mLeyes;
     Activity mParentActivity;
 
 
@@ -32,9 +30,9 @@ public class ConceptosFragment extends Fragment {
         mParentActivity = getActivity();
         DataBaseAccess databaseAccess = DataBaseAccess.getInstance(mParentActivity);
         databaseAccess.open();
-        mConceptos = databaseAccess.getConceptos();
+        mLeyes = databaseAccess.getLeyes();
         databaseAccess.close();
-        conceptAdapter = new ConceptosArrayAdapter(mParentActivity, R.layout.concepto_item_list, mConceptos);
+        leyesArrayAdapter = new LeyesArrayAdapter(mParentActivity, R.layout.concepto_item_list, mLeyes);
     }
 
     @Override
@@ -43,7 +41,7 @@ public class ConceptosFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.list_fragment, container, false);;
         mListView = (ListView) view.findViewById(R.id.lista_datos);
-        mListView.setAdapter(conceptAdapter);
+        mListView.setAdapter(leyesArrayAdapter);
         mListView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener()
                 {
@@ -51,14 +49,14 @@ public class ConceptosFragment extends Fragment {
 
                     @Override
                     public void onItemClick(AdapterView<?> arg0, View view,
-                                            int position, long id) {
+                                                   int position, long id) {
 
                         Bundle arg = new Bundle();
-                        Datos c = mConceptos.get(position);
-                        arg.putString("titu", c.getNombre());
+                        Leyes c = mLeyes.get(position);
+                        arg.putString("nom", c.getNombre());
+                        arg.putString("art", c.getArticulo());
                         arg.putString("desc", c.getTexto());
-                        arg.putString("img", c.getImagen());
-                        ConceptosItemsFragment fragment = new ConceptosItemsFragment();
+                        LeyesItemFragment fragment = new LeyesItemFragment();
                         fragment.setArguments(arg);
                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
                         transaction.replace(R.id.mainF, fragment, "tag1");
