@@ -94,6 +94,10 @@ public class Principal extends AppCompatActivity
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.mainF, new LeyesFragment());
             ft.commit();
+        } else if (id == R.id.nav_curiosos) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.mainF, new DatosCuriososFragment());
+            ft.commit();
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

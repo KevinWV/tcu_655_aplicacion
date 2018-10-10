@@ -30,7 +30,6 @@ public class LeyesItemFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.items, container, false);
-        ;
         Bundle args = getArguments();
         String nombre = args.getString("nom") + " " + args.getString("art");
         String descripcion = args.getString("desc");

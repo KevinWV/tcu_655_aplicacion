@@ -29,6 +29,7 @@ public class LeyesArrayAdapter extends ArrayAdapter<Leyes> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.leyes_item_list, null);
         Leyes ley = lista.get(position);
+
         TextView articulo = (TextView) v.findViewById(R.id.articulo);
         articulo.setText(ley.getArticulo());
         if(titulo.compareTo(ley.getNombre()) != 0){
