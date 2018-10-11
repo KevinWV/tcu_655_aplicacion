@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <fragment android:name="com.example.usuario.tcu_655.Mapa"
+    <fragment android:name="com.example.usuario.tcu_655.ArcgisAPI"
         android:id="@+id/mainF"
         android:layout_weight="1"
         android:layout_width="0dp"

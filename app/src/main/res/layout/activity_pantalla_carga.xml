@@ -6,12 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".PantallaCarga">
 
-    <ImageView
-        android:id="@+id/pantallaCarga"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="Pantalla de carga"
-        android:src="@drawable/firma"
-        app:layout_anchor="@+id/pantallaCarga"
-        app:layout_anchorGravity="top|center" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/pantallaCarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Pantalla de carga"
+            android:src="@drawable/pantalla"
+            app:layout_anchor="@+id/pantallaCarga" />
+    </LinearLayout>
+
 </android.support.design.widget.CoordinatorLayout>
