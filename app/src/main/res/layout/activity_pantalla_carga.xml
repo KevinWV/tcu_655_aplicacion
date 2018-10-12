@@ -6,19 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".PantallaCarga">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#01a8e5"
         android:orientation="horizontal"
-        android:background="@color/colorPrimary">
+        android:layout_gravity="bottom|start">
 
         <ImageView
             android:id="@+id/pantallaCarga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:scaleType="fitStart"
             android:contentDescription="Pantalla de carga"
             android:src="@drawable/pantalla"
             app:layout_anchor="@+id/pantallaCarga" />
-    </LinearLayout>
+    </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>
