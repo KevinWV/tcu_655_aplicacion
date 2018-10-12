@@ -80,9 +80,7 @@ public class Principal extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_asadas) {
-            // Handle the camera action
-        } else if (id == R.id.nav_mapa) {
+        if (id == R.id.nav_mapa) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.mainF, new ArcgisAPI());
             ft.commit();
@@ -94,9 +92,17 @@ public class Principal extends AppCompatActivity
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.mainF, new LeyesFragment());
             ft.commit();
+        } else if (id == R.id.nav_asadas) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.mainF, new AsadasFragment());
+            ft.commit();
         } else if (id == R.id.nav_curiosos) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.mainF, new DatosCuriososFragment());
+            ft.commit();
+        } else if (id == R.id.nav_zona) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.mainF, new ZonaFragment());
             ft.commit();
         } else if (id == R.id.nav_share) {
 

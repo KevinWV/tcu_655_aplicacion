@@ -14,6 +14,7 @@ import java.util.Random;
 public class DatosCuriososFragment extends Fragment {
 
     Activity mParentActivity;
+    static int anterior = 20;
 
 
     @Override
@@ -29,8 +30,13 @@ public class DatosCuriososFragment extends Fragment {
         View view = inflater.inflate(R.layout.datos_curiosos_fragment, container, false);
         TextView text = (TextView) view.findViewById(R.id.texto);
         Random rand = new Random();
-        int random = rand.nextInt(9);
+        int random = 20;
+        while(random == anterior) {
+            random = rand.nextInt(9);
+        }
+        anterior = random;
         text.setText(Global.datosCuriosos[random]);
         return view;
     }
+
 }

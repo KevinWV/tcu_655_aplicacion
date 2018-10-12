@@ -65,10 +65,34 @@ public class DataBaseAccess {
 
     public List<Asadas> getAsadas() {
         List<Asadas> list = new ArrayList<>();
-        Cursor cursor = database.rawQuery("SELECT * FROM Asadas", null);
+        Cursor cursor = database.rawQuery("SELECT * FROM asadas", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(new Asadas(cursor.getString(0),cursor.getString(1),cursor.getInt(2),cursor.getString(3),cursor.getInt(4),cursor.getInt(5),cursor.getString(6)));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public List<TomasDeAgua> getTomas() {
+        List<TomasDeAgua> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM tomasagua", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(new TomasDeAgua(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5)));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return list;
+    }
+
+    public List<Zona> getZona() {
+        List<Zona> list = new ArrayList<>();
+        Cursor cursor = database.rawQuery("SELECT * FROM zonas", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            list.add(new Zona(cursor.getString(0),cursor.getString(1),cursor.getString(2)));
             cursor.moveToNext();
         }
         cursor.close();
