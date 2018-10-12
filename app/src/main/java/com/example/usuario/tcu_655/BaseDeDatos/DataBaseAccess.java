@@ -5,10 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.esri.arcgisruntime.location.AndroidLocationDataSource;
-
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -51,14 +48,15 @@ public class DataBaseAccess {
         return list;
     }
 
-    public List<Datos> getConceptos() {
-        List<Datos> list = new ArrayList<>();
+    public List<Conceptos> getConceptos() {
+        List<Conceptos> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM glosario", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            list.add(new Conceptos(cursor.getString(0),cursor.getString(1),cursor.getString(2)));
+            list.add(new Conceptos(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getInt(4),cursor.getString(5)));
             cursor.moveToNext();
         }
+        Collections.sort(list);
         cursor.close();
         return list;
     }

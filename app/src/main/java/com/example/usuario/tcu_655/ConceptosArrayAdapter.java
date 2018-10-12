@@ -7,17 +7,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.example.usuario.tcu_655.BaseDeDatos.Conceptos;
 import java.util.List;
 
-import com.example.usuario.tcu_655.BaseDeDatos.Datos;
 
+public class ConceptosArrayAdapter extends ArrayAdapter<Conceptos> {
 
+    List<Conceptos> lista;
 
-public class ConceptosArrayAdapter extends ArrayAdapter<Datos> {
-
-    List<Datos> lista;
-
-    public ConceptosArrayAdapter(Context context, int textViewResourceId, List<Datos> objects) {
+    public ConceptosArrayAdapter(Context context, int textViewResourceId, List<Conceptos> objects) {
         super(context, textViewResourceId, objects);
         lista = objects;
     }
@@ -28,7 +26,7 @@ public class ConceptosArrayAdapter extends ArrayAdapter<Datos> {
         Context context = getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.concepto_item_list, null);
-        Datos dato = lista.get(position);
+        Conceptos dato = lista.get(position);
         TextView nombre = (TextView) v.findViewById(R.id.nombre);
         nombre.setText(dato.getNombre());
         ImageView imagen = (ImageView) v.findViewById(R.id.imagen);

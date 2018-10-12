@@ -11,8 +11,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import java.util.List;
 
+import com.example.usuario.tcu_655.BaseDeDatos.Conceptos;
 import com.example.usuario.tcu_655.BaseDeDatos.DataBaseAccess;
-import com.example.usuario.tcu_655.BaseDeDatos.Datos;
 
 
 
@@ -22,7 +22,7 @@ public class ConceptosFragment extends Fragment {
     public static ConceptosFragment me = null;
     static ConceptosArrayAdapter conceptAdapter;
     ListView mListView = null;
-    static List<Datos> mConceptos;
+    static List<Conceptos> mConceptos;
     Activity mParentActivity;
 
 
@@ -54,7 +54,7 @@ public class ConceptosFragment extends Fragment {
                                             int position, long id) {
 
                         Bundle arg = new Bundle();
-                        Datos c = mConceptos.get(position);
+                        Conceptos c = mConceptos.get(position);
                         arg.putString("titu", c.getNombre());
                         arg.putString("desc", c.getTexto());
                         arg.putString("img", c.getImagen());

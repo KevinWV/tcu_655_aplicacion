@@ -3,8 +3,11 @@ package com.example.usuario.tcu_655.BaseDeDatos;
 
 import android.support.annotation.NonNull;
 
-public class Leyes extends Datos implements Comparable{
-    String articulo;
+public class Leyes implements Comparable<Leyes>{
+    private String articulo;
+    private String nombre;
+    private String texto;
+
 
     public Leyes(String nombre, String articulo, String texto) {
         this.setArticulo(articulo);
@@ -25,11 +28,10 @@ public class Leyes extends Datos implements Comparable{
     }
 
     @Override
-    public int compareTo(Object o) {
-        Leyes ley = (Leyes) o;
-        int comp = ley.getNombre().compareTo(this.getNombre());
+    public int compareTo(Leyes o) {
+        int comp = o.getNombre().compareTo(this.getNombre());
         if( comp == 0){
-            comp = ley.getArticulo().compareTo(this.getArticulo());
+            comp = o.getArticulo().compareTo(this.getArticulo());
         }
         return comp;
 
@@ -38,6 +40,22 @@ public class Leyes extends Datos implements Comparable{
     @Override
     public String toString() {
         return "[]";
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
     }
 }
 

@@ -38,12 +38,6 @@ public class LeyesArrayAdapter extends ArrayAdapter<Leyes> {
             nombre.setVisibility(View.VISIBLE);
             titulo = ley.getNombre();
         }
-        ImageView imagen = (ImageView) v.findViewById(R.id.imagen);
-        if(ley.getImagen() != "" && ley.getImagen() != null) {
-            //imagen.setBackground(Drawable.createFromPath(dato.getImagen()));
-            imagen.setBackgroundResource(R.drawable.water);
-        }
-
         return v;
 
     }

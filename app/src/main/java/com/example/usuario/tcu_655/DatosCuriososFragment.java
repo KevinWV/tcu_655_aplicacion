@@ -15,6 +15,7 @@ public class DatosCuriososFragment extends Fragment {
 
     Activity mParentActivity;
     static int anterior = 20;
+    TextView mText;
 
 
     @Override
@@ -28,15 +29,22 @@ public class DatosCuriososFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.datos_curiosos_fragment, container, false);
-        TextView text = (TextView) view.findViewById(R.id.texto);
+        mText = (TextView) view.findViewById(R.id.texto);
+        next();
+        return view;
+    }
+
+
+    //Metodo para escoger una dato curioso aleatorio diferente al anterior.
+
+    public void next(){
+        int random = anterior;
         Random rand = new Random();
-        int random = 20;
         while(random == anterior) {
             random = rand.nextInt(9);
         }
         anterior = random;
-        text.setText(Global.datosCuriosos[random]);
-        return view;
+        mText.setText(Global.datosCuriosos[random]);
     }
 
 }
