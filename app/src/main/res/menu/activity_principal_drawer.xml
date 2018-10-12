@@ -38,13 +38,17 @@
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/pdf1"
+                android:icon="@drawable/ic_pdf_24dp"
+                android:title="Insumos: Diágnostico" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/pdf2"
+                android:icon="@drawable/ic_pdf_24dp"
+                android:title="Insumos: Plan de manejo" />
+            <item
+                android:id="@+id/facebook"
+                android:icon="@drawable/ic_facebook_24dp"
+                android:title="Insumos: Plan de manejo" />
         </menu>
     </item>
 

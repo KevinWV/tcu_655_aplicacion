@@ -1,5 +1,7 @@
 package com.example.usuario.tcu_655;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
@@ -104,10 +106,18 @@ public class Principal extends AppCompatActivity
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.mainF, new ZonaFragment());
             ft.commit();
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.pdf1) {
+            Uri uri = Uri.parse("https://geografia.fcs.ucr.ac.cr/images/Proyectos/accion-social/tc-655/PLAN-DE-MANEJO-DE-LA-SUBCUENCA-DEL-RIO-COTO.pdf"); // missing 'http://' will cause crashed
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        } else if (id == R.id.pdf2) {
+            Uri uri = Uri.parse("https://geografia.fcs.ucr.ac.cr/images/Proyectos/accion-social/tc-655/PLAN-DE-MANEJO-DE-LA-SUBCUENCA-DEL-RIO-COTO.pdf"); // missing 'http://' will cause crashed
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        }else if (id == R.id.facebook) {
+            Uri uri = Uri.parse("https://www.facebook.com/TCU655"); // missing 'http://' will cause crashed
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
