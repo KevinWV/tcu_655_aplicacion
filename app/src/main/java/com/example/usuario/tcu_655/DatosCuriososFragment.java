@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -31,8 +32,18 @@ public class DatosCuriososFragment extends Fragment {
         View view = inflater.inflate(R.layout.datos_curiosos_fragment, container, false);
         mText = (TextView) view.findViewById(R.id.texto);
         next();
+
+        Button button  = (Button) view.findViewById(R.id.button10);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                next();
+            }
+        });
+
         return view;
     }
+
+
 
 
     //Metodo para escoger una dato curioso aleatorio diferente al anterior.

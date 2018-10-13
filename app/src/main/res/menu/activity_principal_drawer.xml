@@ -22,7 +22,7 @@
             android:title="ASADAS" />
         <item
                 android:id="@+id/nav_leyes"
-                android:icon="@drawable/ic_asadas_24dp"
+                android:icon="@drawable/ic_leyes_24dp"
                 android:title="Leyes" />
 
         <item
@@ -35,20 +35,20 @@
             android:title="Contactos" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Recurso en línae">
         <menu>
             <item
                 android:id="@+id/pdf1"
                 android:icon="@drawable/ic_pdf_24dp"
-                android:title="Insumos: Diágnostico" />
+                android:title="Diagnóstico de la subcuenca del rio coto" />
             <item
                 android:id="@+id/pdf2"
                 android:icon="@drawable/ic_pdf_24dp"
-                android:title="Insumos: Plan de manejo" />
+                android:title="Plan de manejo de la subcuenca del rio coto" />
             <item
                 android:id="@+id/facebook"
-                android:icon="@drawable/ic_facebook_24dp"
-                android:title="Insumos: Plan de manejo" />
+                android:icon="@drawable/face"
+                android:title="Facebook" />
         </menu>
     </item>
 
