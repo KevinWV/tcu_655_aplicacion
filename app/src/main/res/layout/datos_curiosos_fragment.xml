@@ -16,8 +16,6 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/texto"
                 android:layout_centerInParent="true"
-                android:textSize="36dp"
-                android:textStyle="bold"
                 android:textColor="@color/colorAccent2"
             />
     </RelativeLayout>

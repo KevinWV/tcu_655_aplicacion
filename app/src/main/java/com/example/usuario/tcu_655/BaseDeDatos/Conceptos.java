@@ -71,7 +71,7 @@ public class Conceptos implements Comparable<Conceptos>{
 
     @Override
     public int compareTo(Conceptos o) {
-        int comp = o.getPrioridad() - this.getPrioridad();
+        int comp = this.getPrioridad() - o.getPrioridad();
         return comp;
 
     }
