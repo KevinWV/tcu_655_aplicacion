@@ -54,7 +54,12 @@ public class AsadasFragment extends Fragment {
                         Bundle arg = new Bundle();
                         Asadas c = mAsadas.get(position);
                         arg.putString("titu", c.getNombre());
-                        ConceptosItemsFragment fragment = new ConceptosItemsFragment();
+                        arg.putString("can", c.getCanton());
+                        arg.putInt("cC", c.getNumeroComunidadesAbastece());
+                        arg.putInt("cP", c.getPoblacionAbastecidad());
+                        arg.putInt("fund", c.getAñoConstrucción());
+                        arg.putString("cond", c.getCondicion());
+                        AsadasItemsFragment fragment = new AsadasItemsFragment();
                         fragment.setArguments(arg);
                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
                         transaction.replace(R.id.mainF, fragment, "tag1");
