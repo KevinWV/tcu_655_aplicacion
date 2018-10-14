@@ -1,45 +1,21 @@
 package com.example.usuario.tcu_655.BaseDeDatos;
 
 
-import android.support.annotation.NonNull;
+import com.example.usuario.tcu_655.Global;
 
-public class Leyes implements Comparable<Leyes>{
-    private String articulo;
-    private String nombre;
-    private String texto;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Leyes{
+    String nombre;
+    int fuente;
+    List<Articulo> articulos;
 
 
-    public Leyes(String nombre, String articulo, String texto) {
-        this.setArticulo(articulo);
-        this.setNombre(nombre);
-        this.setTexto(texto);
-    }
-
-    public Leyes(){
-
-    }
-
-    public void setArticulo( String articulo){
-        this.articulo = articulo;
-    }
-
-    public String getArticulo(){
-        return articulo;
-    }
-
-    @Override
-    public int compareTo(Leyes o) {
-        int comp = o.getNombre().compareTo(this.getNombre());
-        if( comp == 0){
-            comp = o.getArticulo().compareTo(this.getArticulo());
-        }
-        return comp;
-
-    }
-
-    @Override
-    public String toString() {
-        return "[]";
+    public Leyes(String nombre, int fuente) {
+        this.nombre = nombre;
+        this.fuente = fuente;
+        articulos = new ArrayList<Articulo>();
     }
 
     public String getNombre() {
@@ -50,12 +26,21 @@ public class Leyes implements Comparable<Leyes>{
         this.nombre = nombre;
     }
 
-    public String getTexto() {
-        return texto;
+    public String getFuente() {
+        return Global.links[fuente];
     }
 
-    public void setTexto(String texto) {
-        this.texto = texto;
+    public void setFuente(int fuente) {
+        this.fuente = fuente;
     }
+
+    public void addArticulo(Articulo articulo){
+        articulos.add(articulo);
+    }
+
+    public List<Articulo> getArticulos(){
+        return articulos;
+    }
+
 }
 

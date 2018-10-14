@@ -40,11 +40,25 @@ public class DataBaseAccess {
         Cursor cursor = database.rawQuery("SELECT * FROM leyes", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            list.add(new Leyes(cursor.getString(0),cursor.getString(1),cursor.getString(2)));
+            boolean nueva = true;
+            for (Leyes temp : list) {
+                if(temp.nombre.equals(cursor.getString(0))){
+                    temp.addArticulo(new Articulo(cursor.getString(1), cursor.getString(2)));
+                    nueva = false;
+                    break;
+                }
+            }
+            if(nueva){
+                Leyes ley = new Leyes(cursor.getString(0), cursor.getInt(3));
+                ley.addArticulo(new Articulo(cursor.getString(1), cursor.getString(2)));
+                list.add(ley);
+
+            }
             cursor.moveToNext();
         }
-        Collections.sort(list);
-        cursor.close();
+        for (Leyes temp : list){
+            Collections.sort(temp.articulos);
+        }
         return list;
     }
 
