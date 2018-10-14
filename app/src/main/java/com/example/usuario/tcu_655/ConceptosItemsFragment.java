@@ -39,6 +39,9 @@ public class ConceptosItemsFragment extends Fragment {
         ImageView i = (ImageView) view.findViewById(R.id.imagen);
         t.setText(nombre);
         d.setText(descripcion);
+        String img = imagen.toLowerCase().substring(0, imagen.length() - 4);
+        int id = getContext().getResources().getIdentifier(img,"drawable", getContext().getPackageName());
+        i.setImageResource(id);
         return view;
     }
 }

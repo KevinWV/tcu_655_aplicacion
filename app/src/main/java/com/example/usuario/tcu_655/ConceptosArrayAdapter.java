@@ -30,10 +30,13 @@ public class ConceptosArrayAdapter extends ArrayAdapter<Conceptos> {
         TextView nombre = (TextView) v.findViewById(R.id.nombre);
         nombre.setText(dato.getNombre());
         ImageView imagen = (ImageView) v.findViewById(R.id.imagen);
-        if(dato.getImagen() != "" && dato.getImagen() != null) {
-            //imagen.setBackground(Drawable.createFromPath(dato.getImagen()));
-            imagen.setBackgroundResource(R.drawable.water);
+
+        if(dato.getEtiqueta() != "" && dato.getEtiqueta() != null) {
+            int id = context.getResources().getIdentifier("cat"+dato.getEtiqueta().toLowerCase(),"drawable", context.getPackageName());
+            imagen.setBackgroundResource(id);
+            //imagen.setBackgroundResource(R.drawable.water);
         }
+
 
         return v;
 
