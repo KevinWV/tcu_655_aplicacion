@@ -35,7 +35,7 @@
             android:title="Contactos" />
     </group>
 
-    <item android:title="Recurso en línae">
+    <item android:title="Recurso en línea">
         <menu>
             <item
                 android:id="@+id/pdf1"

@@ -119,7 +119,11 @@ public class Principal extends AppCompatActivity
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.mainF, new ZonaFragment());
             ft.commit();
-        } else if (id == R.id.pdf1) {
+        } else if (id == R.id.nav_contactos) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.mainF, new contactos());
+            ft.commit();
+        }else if (id == R.id.pdf1) {
             Uri uri = Uri.parse("https://geografia.fcs.ucr.ac.cr/images/Proyectos/accion-social/tc-655/DIAGNSTICO-DE-LA-SUBCUENCA-DEL-RIO-COTO.pdf"); // missing 'http://' will cause crashed
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);

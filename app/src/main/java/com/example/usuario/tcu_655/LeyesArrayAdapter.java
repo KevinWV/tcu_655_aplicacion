@@ -57,7 +57,7 @@ public class LeyesArrayAdapter extends ArrayAdapter<Leyes> {
                 }
             });
         }
-        Button button = (Button) v.findViewById(R.id.button);
+        ImageButton button = (ImageButton) v.findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
