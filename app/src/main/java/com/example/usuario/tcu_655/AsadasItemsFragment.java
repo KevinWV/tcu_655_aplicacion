@@ -11,7 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class AsadasItemsFragment extends Fragment {
-    public static ConceptosFragment me = null;
+    public static AsadasFragment me = null;
     ListView mListView = null;
     Activity mParentActivity;
 

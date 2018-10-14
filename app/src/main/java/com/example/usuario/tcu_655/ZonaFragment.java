@@ -53,7 +53,9 @@ public class ZonaFragment extends Fragment {
                         Bundle arg = new Bundle();
                         Zona c = mZonas.get(position);
                         arg.putString("titu", c.getZona());
-                        ConceptosItemsFragment fragment = new ConceptosItemsFragment();
+                        arg.putString("com", c.getComunidades());
+                        arg.putString("uso", c.getUso());
+                        ZonaItemsFragment fragment = new ZonaItemsFragment();
                         fragment.setArguments(arg);
                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
                         transaction.replace(R.id.mainF, fragment, "tag1");
