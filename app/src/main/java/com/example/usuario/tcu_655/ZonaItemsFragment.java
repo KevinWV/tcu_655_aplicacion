@@ -34,7 +34,10 @@ public class ZonaItemsFragment extends Fragment {
         TextView t = (TextView) view.findViewById(R.id.titulo);
         TextView d = (TextView) view.findViewById(R.id.descripcion);
         t.setText(nombre);
-        d.setText("Comunidades: "+ com+"\n\n Uso: "+ uso);
+        String s = "";
+        if(com!= (null)) s = "Comunidades: "+ com;
+        if(uso!= (null)) s += "\n\n Uso: "+ uso;
+        d.setText(s);
 
         return view;
     }

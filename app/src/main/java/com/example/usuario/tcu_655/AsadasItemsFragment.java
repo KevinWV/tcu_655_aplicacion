@@ -41,11 +41,11 @@ public class AsadasItemsFragment extends Fragment {
         TextView g = (TextView) view.findViewById(R.id.fundacion);
         TextView h = (TextView) view.findViewById(R.id.condicion);
         t.setText(nombre);
-        d.setText("Cantón: "+canton);
-        e.setText("Número de comunidades que abastece: : "+cantC);
-        f.setText("Población abastecida: "+cantP);
-        g.setText("Fundación: "+fundacion);
-        h.setText("Condición: "+condicion);
+        if(canton != (null)) d.setText("Cantón: "+canton);
+        if(cantC!= (null)) e.setText("Número de comunidades que abastece: : "+cantC);
+        if(cantP!= (null)) f.setText("Población abastecida: "+cantP);
+        if(fundacion!= (null)) g.setText("Fundación: "+fundacion);
+        if(condicion!= (null)) h.setText("Condición: "+condicion);
 
         return view;
     }
