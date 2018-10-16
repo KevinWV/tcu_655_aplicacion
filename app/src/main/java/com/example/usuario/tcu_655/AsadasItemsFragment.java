@@ -30,9 +30,9 @@ public class AsadasItemsFragment extends Fragment {
         Bundle args = getArguments();
         String nombre = args.getString("titu");
         String canton = args.getString("can");
-        String cantC = args.getString("cC");
-        String cantP = args.getString("cP");
-        String fundacion = args.getString("fund");
+        int cantC = args.getInt("cC");
+        int cantP = args.getInt("cP");
+        int fundacion = args.getInt("fund");
         String condicion = args.getString("cond");
         TextView t = (TextView) view.findViewById(R.id.titulo);
         TextView d = (TextView) view.findViewById(R.id.canton);
@@ -42,9 +42,9 @@ public class AsadasItemsFragment extends Fragment {
         TextView h = (TextView) view.findViewById(R.id.condicion);
         t.setText(nombre);
         if(canton != (null)) d.setText("Cantón: "+canton);
-        if(cantC!= (null)) e.setText("Número de comunidades que abastece: : "+cantC);
-        if(cantP!= (null)) f.setText("Población abastecida: "+cantP);
-        if(fundacion!= (null)) g.setText("Fundación: "+fundacion);
+        if(cantC!= (0)) e.setText("Número de comunidades que abastece: : "+cantC);
+        if(cantP!= (0)) f.setText("Población abastecida: "+cantP);
+        if(fundacion!= (0)) g.setText("Fundación: "+fundacion);
         if(condicion!= (null)) h.setText("Condición: "+condicion);
 
         return view;
