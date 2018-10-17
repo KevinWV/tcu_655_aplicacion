@@ -84,19 +84,23 @@ public class DataBaseAccess {
             cursor.moveToNext();
         }
         cursor.close();
+        getTomas(list);
         return list;
     }
 
-    public List<TomasDeAgua> getTomas() {
-        List<TomasDeAgua> list = new ArrayList<>();
+    public void getTomas(List<Asadas> lista) {
         Cursor cursor = database.rawQuery("SELECT * FROM tomasagua", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            list.add(new TomasDeAgua(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5)));
+            TomasDeAgua toma = new TomasDeAgua(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5));
+            for (Asadas temp:lista) {
+                if(toma.getZona().contains(temp.getNombre())){
+                    temp.setToma(toma);
+                }
+            }
             cursor.moveToNext();
         }
         cursor.close();
-        return list;
     }
 
     public List<Zona> getZona() {

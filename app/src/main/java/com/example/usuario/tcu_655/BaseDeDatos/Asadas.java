@@ -9,6 +9,7 @@ public class Asadas {
     int poblacionAbastecidas;
     int añoConstruccion;
     String condicion;
+    TomasDeAgua toma;
 
     public Asadas(String nombre, String canton, int numeroComunidadesAbastece, String comunidadesAbastece, int poblacionAbastecidas, int añoConstruccion, String condicion){
         this.nombre = nombre;
@@ -76,5 +77,13 @@ public class Asadas {
 
     public void setCondicion(String condicion) {
         this.condicion = condicion;
+    }
+
+    public TomasDeAgua getToma() {
+        return toma;
+    }
+
+    public void setToma(TomasDeAgua toma) {
+        this.toma = toma;
     }
 }

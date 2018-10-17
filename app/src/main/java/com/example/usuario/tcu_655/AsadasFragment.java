@@ -32,7 +32,7 @@ public class AsadasFragment extends Fragment {
         databaseAccess.open();
         mAsadas = databaseAccess.getAsadas();
         databaseAccess.close();
-        asadaAdapter = new AsadasArrayAdapter(mParentActivity, R.layout.concepto_item_list, mAsadas);
+        asadaAdapter = new AsadasArrayAdapter(mParentActivity, R.layout.concepto_item_list, mAsadas, getFragmentManager());
     }
 
     @Override
@@ -42,32 +42,6 @@ public class AsadasFragment extends Fragment {
         View view = inflater.inflate(R.layout.list_fragment, container, false);;
         mListView = (ListView) view.findViewById(R.id.lista_datos);
         mListView.setAdapter(asadaAdapter);
-        mListView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener()
-                {
-
-
-                    @Override
-                    public void onItemClick(AdapterView<?> arg0, View view,
-                                            int position, long id) {
-
-                        Bundle arg = new Bundle();
-                        Asadas c = mAsadas.get(position);
-                        arg.putString("titu", c.getNombre());
-                        arg.putString("can", c.getCanton());
-                        arg.putInt("cC", c.getNumeroComunidadesAbastece());
-                        arg.putInt("cP", c.getPoblacionAbastecidad());
-                        arg.putInt("fund", c.getAñoConstrucción());
-                        arg.putString("cond", c.getCondicion());
-                        AsadasItemsFragment fragment = new AsadasItemsFragment();
-                        fragment.setArguments(arg);
-                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                        transaction.replace(R.id.mainF, fragment, "tag1");
-                        transaction.addToBackStack(null);
-                        transaction.commit();
-                    }
-                }
-        );
         return view;
     }
 }
