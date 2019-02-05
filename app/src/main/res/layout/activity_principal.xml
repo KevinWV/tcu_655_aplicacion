@@ -8,11 +8,124 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <fragment android:name="com.example.usuario.tcu_655.ArcgisAPI"
+    <RelativeLayout
         android:id="@+id/mainF"
         android:layout_weight="1"
         android:layout_width="0dp"
+        android:visibility="gone"
         android:layout_height="match_parent" />
+
+    <RelativeLayout android:id="@+id/menu"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+        <FrameLayout android:id="@+id/mapa"
+                     android:layout_width="80dp"
+                     android:layout_height="80dp"
+                     android:layout_centerVertical="true"
+                     android:layout_centerHorizontal="true">
+
+            <ImageView android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:src="@drawable/world" />
+
+            <ImageView android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:src="@drawable/circle" />
+
+        </FrameLayout>
+
+
+        <FrameLayout android:id="@+id/conceptos"
+                     android:layout_width="80dp"
+                     android:layout_height="80dp"
+                     android:layout_alignLeft="@id/mapa"
+                     android:layout_above="@id/mapa">
+
+            <ImageView android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:src="@drawable/coceptos" />
+
+            <ImageView android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:src="@drawable/circle" />
+
+        </FrameLayout>
+
+
+        <FrameLayout android:id="@+id/datos"
+                     android:layout_width="80dp"
+                     android:layout_height="80dp"
+                     android:layout_alignBottom="@id/mapa"
+                     android:layout_marginBottom="20dp"
+                     android:layout_toLeftOf="@id/mapa">
+
+            <ImageView android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:src="@drawable/key" />
+
+            <ImageView android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:src="@drawable/circle" />
+
+        </FrameLayout>
+
+        <FrameLayout android:id="@+id/asadas"
+                     android:layout_width="80dp"
+                     android:layout_height="80dp"
+                     android:layout_alignBottom="@id/mapa"
+                     android:layout_marginBottom="20dp"
+                     android:layout_toRightOf="@id/mapa">
+            >
+
+            <ImageView android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:src="@drawable/drop" />
+
+            <ImageView android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:src="@drawable/circle" />
+
+        </FrameLayout>
+
+
+        <FrameLayout android:id="@+id/leyes"
+                     android:layout_width="80dp"
+                     android:layout_height="80dp"
+                     android:layout_marginLeft="50dp"
+                     android:layout_alignStart="@id/mapa"
+                     android:layout_below="@id/mapa">
+
+            <ImageView android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:src="@drawable/judge" />
+
+            <ImageView android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:src="@drawable/circle" />
+
+        </FrameLayout>
+
+        <FrameLayout android:id="@+id/zonificacion"
+                     android:layout_width="80dp"
+                     android:layout_height="80dp"
+                     android:layout_marginRight="50dp"
+                     android:layout_alignEnd="@id/mapa"
+
+                     android:layout_below="@id/mapa">
+
+            <ImageView android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:src="@drawable/zona_icon" />
+
+            <ImageView android:layout_width="80dp"
+                       android:layout_height="80dp"
+                       android:src="@drawable/circle" />
+
+        </FrameLayout>
+
+    </RelativeLayout>
 
 
     <android.support.design.widget.NavigationView

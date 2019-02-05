@@ -16,6 +16,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.usuario.tcu_655.dummy.DummyContent;
@@ -24,6 +27,8 @@ public class Principal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, gloarioFragment.OnListFragmentInteractionListener {
 
     int ID; //fragment actual
+    RelativeLayout mFragment;
+    RelativeLayout mMenu;
     //final SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);;
 
     @Override
@@ -51,6 +56,48 @@ public class Principal extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        mFragment = (RelativeLayout) findViewById(R.id.mainF);
+        mMenu = (RelativeLayout) findViewById(R.id.menu);
+        FrameLayout mapa = (FrameLayout) findViewById(R.id.mapa);
+        FrameLayout conceptos = (FrameLayout) findViewById(R.id.conceptos);
+        FrameLayout asadas  = (FrameLayout) findViewById(R.id.asadas);
+        FrameLayout zonificacion = (FrameLayout) findViewById(R.id.zonificacion);
+        FrameLayout datos = (FrameLayout) findViewById(R.id.datos);
+        FrameLayout leyes = (FrameLayout) findViewById(R.id.leyes);
+        mapa.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                fragmentManager(R.id.nav_mapa);
+            }
+        });
+
+        conceptos.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                fragmentManager(R.id.nav_glosario);
+            }
+        });
+
+        leyes.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                fragmentManager(R.id.nav_leyes);
+                }
+        });
+
+        asadas.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                fragmentManager(R.id.nav_asadas);
+            }
+        });
+        datos.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                fragmentManager(R.id.nav_curiosos);
+            }
+        });
+
+        zonificacion.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                fragmentManager(R.id.nav_zona);
+            }
+        });
 
         checkFirstRun();
     }
@@ -61,7 +108,14 @@ public class Principal extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            if(mMenu.getVisibility() == View.GONE){
+                mMenu.setVisibility(View.VISIBLE);
+                mFragment.setVisibility(View.GONE);
+                ID = -1;
+            }
+            else {
+                super.onBackPressed();
+            }
         }
     }
 
@@ -92,9 +146,46 @@ public class Principal extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if(id == ID) return false;
-        else ID = id;
+        if(id == ID){
+            return false;
+        }
+        else {
+            fragmentManager(id);
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 
+    public void checkFirstRun() {
+        boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
+        if (isFirstRun){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Aviso Legal");
+            builder.setMessage("Esta aplicación es desarrollada por el Trabajo Comunal Universitario \n \t \"Gestión comunitaria del agua desde el manejo de cuencas hidrográficas\"\n7 mediante el uso de sistemas de información geográfica y software libre. Esta No debe ser utilizada con fines de lucro. Su contenido no tiene fuerza de ley, se dispone como insumo de carácter educativo y accionar social para las comunidades, entidades y personas interesadas.");
+            builder.setCancelable(true);
+            builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(getApplicationContext(), "Aceptado", Toast.LENGTH_SHORT).show();
+                }
+            });
+            builder.show();
+
+            getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+                    .edit()
+                    .putBoolean("isFirstRun", false)
+                    .apply();
+        }
+    }
+
+    @Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+
+    }
+
+    public void fragmentManager(int id){
+        ID = id;
         if (id == R.id.nav_mapa) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.mainF, new ArcgisAPI());
@@ -136,36 +227,7 @@ public class Principal extends AppCompatActivity
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    public void checkFirstRun() {
-        boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
-        if (isFirstRun){
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Aviso Legal");
-            builder.setMessage("Esta aplicación es desarrollada por el Trabajo Comunal Universitario \n \t \"Gestión comunitaria del agua desde el manejo de cuencas hidrográficas\"\n7 mediante el uso de sistemas de información geográfica y software libre. Esta No debe ser utilizada con fines de lucro. Su contenido no tiene fuerza de ley, se dispone como insumo de carácter educativo y accionar social para las comunidades, entidades y personas interesadas.");
-            builder.setCancelable(true);
-            builder.setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(getApplicationContext(), "Aceptado", Toast.LENGTH_SHORT).show();
-                }
-            });
-            builder.show();
-
-            getSharedPreferences("PREFERENCE", MODE_PRIVATE)
-                    .edit()
-                    .putBoolean("isFirstRun", false)
-                    .apply();
-        }
-    }
-
-    @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
-
+        mMenu.setVisibility(View.GONE);
+        mFragment.setVisibility(View.VISIBLE);
     }
 }
